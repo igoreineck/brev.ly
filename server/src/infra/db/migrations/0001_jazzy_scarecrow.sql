@@ -1,0 +1,1 @@
+ALTER TABLE "links" RENAME COLUMN "view_counter" TO "access_counter";

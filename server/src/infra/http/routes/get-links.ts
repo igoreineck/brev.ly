@@ -17,7 +17,7 @@ export const getLinksRoute: FastifyPluginAsyncZod = async (server) => {
                 id: z.string(),
                 name: z.string(),
                 originalUrl: z.string(),
-                viewCounter: z.number(),
+                accessCounter: z.number(),
                 createdAt: z.date(),
               })
             ),
@@ -26,7 +26,7 @@ export const getLinksRoute: FastifyPluginAsyncZod = async (server) => {
         },
       },
     },
-    async (request, reply) => {
+    async (_, reply) => {
       const result = await getLinks();
       const { links, total } = unwrapEither(result);
 
