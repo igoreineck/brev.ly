@@ -19,10 +19,10 @@ type CreateLinkOutput = {
   createdAt: Date;
 };
 
-// @TODO: change from never to the correct error
+// @TODO: improve CustomError to handle a better message
 export async function createLink(
   input: CreateLinkInput
-): Promise<Either<Error, CreateLinkOutput>> {
+): Promise<Either<CustomError, CreateLinkOutput>> {
   const { name, originalUrl } = createLinkInput.parse(input);
 
   try {
