@@ -12,7 +12,7 @@ export const createLinkRoute: FastifyPluginAsyncZod = async (server) => {
         tags: ["links"],
         body: z.object({
           name: z.string(),
-          originalUrl: z.string(),
+          originalUrl: z.string().url(),
         }),
         response: {
           201: z.object({
