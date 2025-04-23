@@ -55,7 +55,6 @@ export default tseslint.config({
 
 ## TODOs:
 
-- Configurar React Router Dom;
-- Criar uma Context API
-- Importar rotas da API
+- (done) Configurar React Router Dom;
+- (done) Importar rotas da API
 - Configurar layout

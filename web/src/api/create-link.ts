@@ -14,10 +14,8 @@ interface CreateLinkResponse {
 }
 
 export async function createLink({ name, originalUrl }: CreateLinkBody) {
-  const result = await api.post<CreateLinkResponse>("/links", {
+  await api.post<CreateLinkResponse>("/links", {
     name,
     originalUrl,
   });
-
-  return result.data;
 }

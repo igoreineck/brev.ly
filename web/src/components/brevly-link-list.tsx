@@ -1,30 +1,33 @@
+import { useQuery } from "@tanstack/react-query";
+import { getLinks, GetLinksResponse } from "@/api/get-links";
 import { BrevlyLink } from "./brevly-link";
-
-type Props = {
-  className: string;
-};
 
 /* 
   TODO:
-  - Implementar API de listagem
   - Adicionar edição de cada link
   - Adicionar remoção de cada link
   - Adicionar estado vazio, com ícone
 */
-export function BrevlyLinkList(_props: Props) {
-  // const links = [];
+export function BrevlyLinkList() {
+  const { data: result, isLoading } = useQuery<GetLinksResponse>({
+    queryKey: ["links"],
+    queryFn: getLinks,
+  });
 
   return (
-    <div className="col-span-1 bg-white p-10">
+    <>
       <h2 className="text-lg text-gray-500">Meus links</h2>
       <hr />
-      {/* {links.map((link) => (
-        <BrevlyLink
-          key={link.id}
-          originalUrl={link.name}
-          shortenedUrl={link.originalUrl}
-        />
-      ))} */}
-    </div>
+      {isLoading && <div>Lista carregando...</div>}
+      {!result && <div>Lista vazia</div>}
+      {result &&
+        result.links.map((link) => (
+          <BrevlyLink
+            key={link.id}
+            name={link.name}
+            originalUrl={link.originalUrl}
+          />
+        ))}
+    </>
   );
 }

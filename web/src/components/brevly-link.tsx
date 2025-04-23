@@ -1,9 +1,9 @@
 type BrevlyLinkProps = {
   originalUrl: string;
-  shortenedUrl: string;
+  name: string;
 };
 
-export function BrevlyLink({ originalUrl, shortenedUrl }: BrevlyLinkProps) {
+export function BrevlyLink({ name, originalUrl }: BrevlyLinkProps) {
   return (
     <div className="flex flex-col">
       <a
@@ -12,7 +12,7 @@ export function BrevlyLink({ originalUrl, shortenedUrl }: BrevlyLinkProps) {
         target="_blank"
         className="text-blue-500 font-medium"
       >
-        {shortenedUrl}
+        {name}
       </a>
       <span className="text-xs text-gray-400">{originalUrl}</span>
     </div>

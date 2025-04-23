@@ -1,51 +1,84 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button, Label, Input } from "./ui";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createLink } from "@/api/create-link";
+import { toast } from "sonner";
 
-type Props = {
-  className?: string;
-};
+const createLinkForm = z.object({
+  name: z.string(),
+  originalUrl: z.string().url(),
+});
 
-// @TODO: adicionar mensagem de validação dos inputs
-export function BrevlyNewLink(_props: Props) {
-  const [originalUrl, setOriginalUrl] = useState("");
-  const [shortenedUrl, setShortenedUrl] = useState("");
+type CreateLinkForm = z.infer<typeof createLinkForm>;
+
+/* @TODO:
+  - Adicionar mensagem de validação dos inputs
+  - Limpar campos do formulário
+  - Adicionar mensagem de erro em caso de falha
+*/
+export function BrevlyNewLink() {
+  const queryClient = useQueryClient();
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<CreateLinkForm>();
+  const { mutateAsync: createLinkFn } = useMutation({
+    mutationFn: createLink,
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: ["links"] });
+    },
+  });
+
+  async function onSubmit(data: CreateLinkForm) {
+    try {
+      await createLinkFn({ name: data.name, originalUrl: data.originalUrl });
+    } catch {
+      toast.error("falhou...");
+    }
+  }
 
   return (
-    <div className="col-span-1 bg-white p-10">
+    <>
       <h2 className="text-lg text-gray-600">Novo link</h2>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label
+          <Label
             htmlFor="originalUrl"
             className="block text-sm/6 font-medium text-gray-500"
           >
             Link original
-          </label>
-          <input
-            type="url"
+          </Label>
+          <Input
             id="originalUrl"
-            name="originalUrl"
-            className="block text-gray-500 min-w-0 w-full text-base border"
-            value={originalUrl}
-            onChange={(e) => setOriginalUrl(e.target.value)}
+            type="url"
+            className="block text-gray-500 h-12 w-full text-base border"
+            placeholder="www.exemplo.com.br"
+            {...register("originalUrl")}
           />
         </div>
         <div>
-          <label htmlFor="urlName" className="block text-gray-500">
+          <Label
+            htmlFor="name"
+            className="block text-sm/6 font-medium text-gray-500"
+          >
             Link encurtado
-          </label>
-          <input
-            id="urlName"
-            name="urlName"
-            className="block text-gray-500 min-w-0 w-full text-base border"
-            value={shortenedUrl}
-            onChange={(e) => setShortenedUrl(e.target.value)}
+          </Label>
+          <Input
+            id="name"
+            className="block text-gray-500 h-12 w-full text-base border"
+            {...register("name")}
           />
         </div>
-        {/* @TODO: change for a custom button */}
-        <button type="submit" className="bg-blue-500 p-2 text-white">
+        <Button
+          type="submit"
+          className="bg-blue-500 p-2 text-white"
+          disabled={isSubmitting}
+        >
           Salvar link
-        </button>
+        </Button>
       </form>
-    </div>
+    </>
   );
 }
