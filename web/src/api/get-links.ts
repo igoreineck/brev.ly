@@ -1,15 +1,15 @@
 import { api } from "../lib/axios";
 
+type Link = {
+  id: string;
+  name: string;
+  originalUrl: string;
+  accessCounter: string;
+  createdAt: Date;
+};
+
 export interface GetLinksResponse {
-  links:
-    | {
-        id: string;
-        name: string;
-        originalUrl: string;
-        accessCounter: string;
-        createdAt: Date;
-      }[]
-    | [];
+  links: Link[] | [];
 }
 
 export async function getLinks() {

@@ -7,11 +7,13 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="min-h-screen min-w-screen bg-gray-100 p-8">
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <Toaster />
-      </QueryClientProvider>
+    <div className="h-screen w-screen bg-gray-200 p-8">
+      <div className="container mx-auto">
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+          <Toaster />
+        </QueryClientProvider>
+      </div>
     </div>
   );
 }

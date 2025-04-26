@@ -14,7 +14,6 @@ type CreateLinkForm = z.infer<typeof createLinkForm>;
 
 /* @TODO:
   - Adicionar mensagem de validação dos inputs
-  - Limpar campos do formulário
   - Adicionar mensagem de erro em caso de falha
 */
 export function BrevlyNewLink() {
@@ -22,6 +21,7 @@ export function BrevlyNewLink() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { isSubmitting },
   } = useForm<CreateLinkForm>();
   const { mutateAsync: createLinkFn } = useMutation({
@@ -34,6 +34,7 @@ export function BrevlyNewLink() {
   async function onSubmit(data: CreateLinkForm) {
     try {
       await createLinkFn({ name: data.name, originalUrl: data.originalUrl });
+      reset();
     } catch {
       toast.error("falhou...");
     }
@@ -67,15 +68,12 @@ export function BrevlyNewLink() {
           </Label>
           <Input
             id="name"
+            prefix="brev.ly/"
             className="block text-gray-500 h-12 w-full text-base border"
             {...register("name")}
           />
         </div>
-        <Button
-          type="submit"
-          className="bg-blue-500 p-2 text-white"
-          disabled={isSubmitting}
-        >
+        <Button type="submit" className="w-full" disabled={isSubmitting}>
           Salvar link
         </Button>
       </form>

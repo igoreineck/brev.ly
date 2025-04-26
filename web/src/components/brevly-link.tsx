@@ -1,20 +1,16 @@
-type BrevlyLinkProps = {
-  originalUrl: string;
+type LinkProps = {
+  id: string;
   name: string;
+  originalUrl: string;
+  accessCounter: string;
+  createdAt: Date;
 };
 
-export function BrevlyLink({ name, originalUrl }: BrevlyLinkProps) {
+export function BrevlyLink(props: LinkProps) {
   return (
     <div className="flex flex-col">
-      <a
-        rel="stylesheet"
-        href={originalUrl}
-        target="_blank"
-        className="text-blue-500 font-medium"
-      >
-        {name}
-      </a>
-      <span className="text-xs text-gray-400">{originalUrl}</span>
+      <a href={`/${props.name}`} target="_blank">{`brev.ly/${props.name}`}</a>
+      <span className="text-xs text-gray-400">{props.originalUrl}</span>
     </div>
   );
 }
