@@ -1,9 +1,5 @@
 import { api } from "../lib/axios";
 
-interface DeleteLinkParams {
-  id: string;
-}
-
 interface DeleteLinkResponse {
   id: string;
   name: string;
@@ -12,12 +8,6 @@ interface DeleteLinkResponse {
   createdAt: Date;
 }
 
-export async function deleteLink({ id }: DeleteLinkParams) {
-  const result = await api.delete<DeleteLinkResponse>("/links", {
-    params: {
-      id,
-    },
-  });
-
-  return result.data;
+export async function deleteLink(id: string) {
+  await api.delete<DeleteLinkResponse>(`/links/${id}`);
 }

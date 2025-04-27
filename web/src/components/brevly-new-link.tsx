@@ -22,7 +22,7 @@ export function BrevlyNewLink() {
     register,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = useForm<CreateLinkForm>();
   const { mutateAsync: createLinkFn } = useMutation({
     mutationFn: createLink,
@@ -54,10 +54,11 @@ export function BrevlyNewLink() {
           <Input
             id="originalUrl"
             type="url"
-            className="block rounded-xl text-gray-600 p-4 h-12 w-full"
+            className="block rounded-xl text-gray-600 p-4 h-12 w-full border-gray-300 border-1 focus:outline focus:border-primary"
             placeholder="www.exemplo.com.br"
-            {...register("originalUrl")}
+            {...register("originalUrl", { required: true })}
           />
+          <span>{errors?.originalUrl?.message}</span>
         </div>
         <div className="mb-6">
           <Label
@@ -68,10 +69,11 @@ export function BrevlyNewLink() {
           </Label>
           <Input
             id="name"
-            prefix="brev.ly/"
-            className="block rounded-xl text-gray-600 h-12 p-4 w-full"
+            className="block rounded-xl text-gray-600 p-4 h-12 w-full border-gray-300 border-1 focus:outline focus:border-primary"
+            prefix="brev.ly/exemplo"
             {...register("name")}
           />
+          <span>{errors?.name?.message}</span>
         </div>
         <Button
           type="submit"

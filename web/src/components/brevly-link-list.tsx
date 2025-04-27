@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getLinks, GetLinksResponse } from "@/api/get-links";
+import { Button } from "@/components/ui";
+import { DownloadSimpleIcon, LinkIcon } from "@/components/icons";
 import { BrevlyLink } from "./brevly-link";
 
 function BrevlyLinkList() {
@@ -13,7 +15,18 @@ function BrevlyLinkList() {
   }
 
   if (!result) {
-    return <div>Lista vazia</div>;
+    return (
+      <div className="flex justify-center">
+        <div className="mt-8">
+          <div className="flex justify-center mb-3">
+            <LinkIcon />
+          </div>
+          <p className="text-xs text-gray-500 uppercase">
+            Ainda não existem links cadastrados
+          </p>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -27,13 +40,21 @@ function BrevlyLinkList() {
 
 /* 
   TODO:
-  - Adicionar remoção de cada link
-  - Adicionar ícone quando estiver no estado vazio.
+  - Adicionar auto scroll em Y
+  - Adicionar cursor disabled quando o botão ta disabled.
 */
 export function BrevlyLinkListContainer() {
   return (
     <div className="col-span-2 bg-white rounded-xl p-8">
-      <h2 className="text-lg font-bold text-gray-600 mb-5">Meus links</h2>
+      <div className="flex items-center justify-between mb-5">
+        <h2 className="text-lg font-bold text-gray-600">Meus links</h2>
+        <Button
+          className="bg-gray-200 rounded-lg text-gray-600 border-gray-200 border-1 hover:bg-gray-200 hover:border-primary cursor-pointer"
+          disabled={true}
+        >
+          <DownloadSimpleIcon /> Baixar CSV
+        </Button>
+      </div>
       <hr className="h-1 text-gray-200" />
       <BrevlyLinkList />
     </div>

@@ -1,8 +1,9 @@
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate, Link } from "react-router";
 import { findLink, FindLinkResponse } from "@/api/find-link";
 import { incrementLinkAccess } from "@/api/increment-link-access";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
+import LogoIcon from "@/assets/Logo_Icon.svg";
 
 function redirect(url: string) {
   setTimeout(() => {
@@ -33,9 +34,22 @@ export function Redirect() {
   }
 
   return (
-    <div className="bg-white w-[580px]">
-      <h2 className="font-medium text-2xl">Redirecionando...</h2>
-      <p>O link será aberto automaticamente em alguns instantes.</p>
+    <div className="flex justify-center">
+      <div className="w-[580px] bg-white rounded-xl px-12 py-16">
+        <div className="flex justify-center mb-6">
+          <img src={LogoIcon} alt="logo-icon" className="h-12" />
+        </div>
+        <h2 className="text-bold text-xl text-gray-600 text-center mb-6">
+          Redirecionando...
+        </h2>
+        <p className="text-gray-500 text-center">
+          O link será aberto automaticamente em alguns instantes. Não foi
+          redirecionado?{" "}
+          <Link to={result?.originalUrl as string} className="text-primary">
+            Acesse aqui
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

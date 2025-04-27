@@ -11,7 +11,7 @@ function App() {
       <div className="container mx-auto">
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />
-          <Toaster />
+          <Toaster richColors />
         </QueryClientProvider>
       </div>
     </div>
