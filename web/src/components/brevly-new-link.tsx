@@ -41,42 +41,46 @@ export function BrevlyNewLink() {
   }
 
   return (
-    <>
-      <h2 className="text-lg text-gray-600">Novo link</h2>
+    <div className="col-span-1 bg-white rounded-xl p-8">
+      <h2 className="text-lg font-bold text-gray-600 mb-6">Novo link</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+        <div className="mb-4">
           <Label
             htmlFor="originalUrl"
-            className="block text-sm/6 font-medium text-gray-500"
+            className="block text-gray-500 uppercase text-xs mb-2"
           >
             Link original
           </Label>
           <Input
             id="originalUrl"
             type="url"
-            className="block text-gray-500 h-12 w-full text-base border"
+            className="block rounded-xl text-gray-600 p-4 h-12 w-full"
             placeholder="www.exemplo.com.br"
             {...register("originalUrl")}
           />
         </div>
-        <div>
+        <div className="mb-6">
           <Label
             htmlFor="name"
-            className="block text-sm/6 font-medium text-gray-500"
+            className="block text-gray-500 uppercase text-xs mb-2"
           >
             Link encurtado
           </Label>
           <Input
             id="name"
             prefix="brev.ly/"
-            className="block text-gray-500 h-12 w-full text-base border"
+            className="block rounded-xl text-gray-600 h-12 p-4 w-full"
             {...register("name")}
           />
         </div>
-        <Button type="submit" className="w-full" disabled={isSubmitting}>
+        <Button
+          type="submit"
+          className="bg-primary text-md text-white p-4 h-12 rounded-xl w-full"
+          disabled={isSubmitting}
+        >
           Salvar link
         </Button>
       </form>
-    </>
+    </div>
   );
 }

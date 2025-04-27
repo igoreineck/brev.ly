@@ -35,7 +35,7 @@ export function Redirect() {
   return (
     <div className="bg-white w-[580px]">
       <h2 className="font-medium text-2xl">Redirecionando...</h2>
-      <p>O link será aberto automaicamente em alguns instantes.</p>
+      <p>O link será aberto automaticamente em alguns instantes.</p>
     </div>
   );
 }

@@ -17,7 +17,7 @@ function BrevlyLinkList() {
   }
 
   return (
-    <div>
+    <div className="divide-y-1 divide-gray-200">
       {result.links.map((props) => (
         <BrevlyLink key={props.id} {...props} />
       ))}
@@ -32,9 +32,9 @@ function BrevlyLinkList() {
 */
 export function BrevlyLinkListContainer() {
   return (
-    <div>
-      <h2 className="text-lg text-gray-500">Meus links</h2>
-      <hr />
+    <div className="col-span-2 bg-white rounded-xl p-8">
+      <h2 className="text-lg font-bold text-gray-600 mb-5">Meus links</h2>
+      <hr className="h-1 text-gray-200" />
       <BrevlyLinkList />
     </div>
   );
