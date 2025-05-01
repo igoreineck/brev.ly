@@ -35,13 +35,13 @@ export function BrevlyNewLink() {
     try {
       await createLinkFn({ name: data.name, originalUrl: data.originalUrl });
       reset();
-    } catch {
-      toast.error("falhou...");
+    } catch (error) {
+      toast.error("errou...");
     }
   }
 
   return (
-    <div className="col-span-1 bg-white rounded-xl p-8">
+    <div className="col-span-1 bg-white rounded-xl p-8 mb-3">
       <h2 className="text-lg font-bold text-gray-600 mb-6">Novo link</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">

@@ -1,8 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { getLinks, GetLinksResponse } from "@/api/get-links";
 import { Button } from "@/components/ui";
 import { DownloadSimpleIcon, LinkIcon } from "@/components/icons";
 import { BrevlyLink } from "./brevly-link";
+import { exportLinks } from "@/api/export-links";
+import { downloadUrl } from "@/utils/download-url";
 
 function BrevlyLinkList() {
   const { data: result, isLoading } = useQuery<GetLinksResponse>({
@@ -41,16 +43,30 @@ function BrevlyLinkList() {
 /* 
   TODO:
   - Adicionar auto scroll em Y
-  - Adicionar cursor disabled quando o botão ta disabled.
+  - Adicionar loader enquanto o botão esta disabled
 */
 export function BrevlyLinkListContainer() {
+  const mutation = useMutation({
+    mutationFn: exportLinks,
+  });
+
+  async function handleExport() {
+    try {
+      const { reportUrl } = await mutation.mutateAsync();
+      downloadUrl(reportUrl);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
-    <div className="col-span-2 bg-white rounded-xl p-8">
+    <div className="sm:col-span-2 bg-white rounded-xl p-8">
       <div className="flex items-center justify-between mb-5">
         <h2 className="text-lg font-bold text-gray-600">Meus links</h2>
         <Button
           className="bg-gray-200 rounded-lg text-gray-600 border-gray-200 border-1 hover:bg-gray-200 hover:border-primary cursor-pointer"
-          disabled={true}
+          disabled={mutation.isPending}
+          onClick={handleExport}
         >
           <DownloadSimpleIcon /> Baixar CSV
         </Button>

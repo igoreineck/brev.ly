@@ -34,8 +34,8 @@ export function Redirect() {
   }
 
   return (
-    <div className="flex justify-center">
-      <div className="w-[580px] bg-white rounded-xl px-12 py-16">
+    <div className="flex justify-center h-screen">
+      <div className="m-auto w-[580px] bg-white rounded-xl px-12 py-16">
         <div className="flex justify-center mb-6">
           <img src={LogoIcon} alt="logo-icon" className="h-12" />
         </div>

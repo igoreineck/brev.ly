@@ -3,8 +3,8 @@ import NotFoundImage from "@/assets/404.svg";
 
 export function NotFound() {
   return (
-    <div className="flex justify-center">
-      <div className="w-[580px] bg-white rounded-xl px-12 py-16">
+    <div className="flex justify-center h-screen">
+      <div className="m-auto w-[580px] bg-white rounded-xl px-12 py-16">
         <div className="flex justify-center mb-6">
           <img src={NotFoundImage} alt="404" className="h-21" />
         </div>
