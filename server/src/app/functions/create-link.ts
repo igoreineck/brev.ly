@@ -2,7 +2,6 @@ import { db } from "@/infra/db";
 import { schema } from "@/infra/db/schemas";
 import { z } from "zod";
 import { type Either, makeLeft, makeRight } from "@/shared/either";
-import { CustomError } from "./errors/custom-error";
 
 const createLinkInput = z.object({
   name: z.string(),
@@ -19,10 +18,9 @@ type CreateLinkOutput = {
   createdAt: Date;
 };
 
-// @TODO: improve CustomError to handle a better message
 export async function createLink(
   input: CreateLinkInput
-): Promise<Either<CustomError, CreateLinkOutput>> {
+): Promise<Either<Error, CreateLinkOutput>> {
   const { name, originalUrl } = createLinkInput.parse(input);
 
   try {
@@ -36,6 +34,6 @@ export async function createLink(
 
     return makeRight(link);
   } catch (error) {
-    return makeLeft(new CustomError());
+    return makeLeft(new Error("Essa URL encurtada já existe."));
   }
 }
