@@ -7,7 +7,7 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="h-screen w-screen bg-gray-200 p-8">
+    <div className="min-h-screen w-screen bg-gray-200 p-8">
       <div className="container mx-auto">
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />

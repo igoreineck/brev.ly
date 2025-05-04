@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getLinks, GetLinksResponse } from "@/api/get-links";
 import { Button } from "@/components/ui";
-import { DownloadSimple, Link } from "phosphor-react";
+import { DownloadSimple, Spinner, Link } from "phosphor-react";
 import { BrevlyLink } from "./brevly-link";
 import { exportLinks } from "@/api/export-links";
 import { downloadUrl } from "@/utils/download-url";
@@ -43,7 +43,6 @@ function BrevlyLinkList() {
 /* 
   TODO:
   - Adicionar auto scroll em Y
-  - Adicionar loader enquanto o botão esta disabled
 */
 export function BrevlyLinkListContainer() {
   const mutation = useMutation({
@@ -68,7 +67,12 @@ export function BrevlyLinkListContainer() {
           disabled={mutation.isPending}
           onClick={handleExport}
         >
-          <DownloadSimple size={16} /> Baixar CSV
+          {mutation.isPending ? (
+            <Spinner size={16} />
+          ) : (
+            <DownloadSimple size={16} />
+          )}
+          Baixar CSV
         </Button>
       </div>
       <hr className="h-1 text-gray-200" />

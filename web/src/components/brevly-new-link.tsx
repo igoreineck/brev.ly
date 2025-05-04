@@ -33,10 +33,18 @@ export function BrevlyNewLink() {
 
   async function onSubmit(data: CreateLinkForm) {
     try {
-      await createLinkFn({ name: data.name, originalUrl: data.originalUrl });
+      await createLinkFn({
+        name: data.name,
+        originalUrl: data.originalUrl,
+      });
       reset();
     } catch (error) {
-      toast.error("errou...");
+      toast.error(
+        <div>
+          <p className="font-bold">Erro no cadastro</p>
+          <p>{error?.response?.data?.message}</p>
+        </div>
+      );
     }
   }
 
@@ -77,7 +85,7 @@ export function BrevlyNewLink() {
         </div>
         <Button
           type="submit"
-          className="bg-primary text-md text-white p-4 h-12 rounded-xl w-full"
+          className="bg-primary text-md text-white p-4 h-12 rounded-xl w-full cursor-pointer"
           disabled={isSubmitting}
         >
           Salvar link

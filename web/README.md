@@ -18,13 +18,13 @@
 - [x] Toast de copy
 - [x] Desabilitar botão de download do CSV quando a lista for vazia
 - [x] Mobile version (simples)
-- [ ] Arrumar layout de fundo, ta quebrando no mobile
-- [ ] Adicionar loader no botão enquanto está disabled, ao fazer download
-- [ ] Avaliar inputs e mensagens de erro
+- [x] Arrumar layout de fundo, ta quebrando no mobile
+- [x] Adicionar loader no botão enquanto está disabled, ao fazer download
+- [x] Avaliar inputs e mensagens de erro
 
 ## Regras
 
 - [x] É obrigatória a criação de uma aplicação React no formato SPA utilizando o Vite como bundler
 - [x] Siga o mais fielmente possível o layout do Figma;
 - [x] Trabalhe com elementos que tragam uma boa experiência ao usuário (empty state, ícones de carregamento, bloqueio de ações a depender do estado da aplicação);
-- [ ] Foco na responsividade: essa aplicação deve ter um bom uso tanto em desktops quanto em celulares.
+- [x] Foco na responsividade: essa aplicação deve ter um bom uso tanto em desktops quanto em celulares.
