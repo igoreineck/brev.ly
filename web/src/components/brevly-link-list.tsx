@@ -40,10 +40,6 @@ function BrevlyLinkList() {
   );
 }
 
-/* 
-  TODO:
-  - Adicionar auto scroll em Y
-*/
 export function BrevlyLinkListContainer() {
   const mutation = useMutation({
     mutationFn: exportLinks,

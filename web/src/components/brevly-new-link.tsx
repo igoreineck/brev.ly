@@ -12,10 +12,6 @@ const createLinkForm = z.object({
 
 type CreateLinkForm = z.infer<typeof createLinkForm>;
 
-/* @TODO:
-  - Adicionar mensagem de validação dos inputs
-  - Adicionar mensagem de erro em caso de falha
-*/
 export function BrevlyNewLink() {
   const queryClient = useQueryClient();
   const {

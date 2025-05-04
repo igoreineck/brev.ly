@@ -9,7 +9,7 @@
 - [x] Deve ser possível incrementar a quantidade de acessos de um link
 - [x] Deve ser possível baixar um CSV com o relatório dos links criados
 
-- [ ] Exibir mensagens de validação
+- [x] Exibir mensagens de validação
 - [x] Ícones e comportamentos de estado vazio e loading
 - [x] Ícones de cabeçalho e outras páginas
 - [x] Estilizar páginas de Redirecionamento e 404
