@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getLinks, GetLinksResponse } from "@/api/get-links";
 import { Button } from "@/components/ui";
-import { DownloadSimpleIcon, LinkIcon } from "@/components/icons";
+import { DownloadSimple, Link } from "phosphor-react";
 import { BrevlyLink } from "./brevly-link";
 import { exportLinks } from "@/api/export-links";
 import { downloadUrl } from "@/utils/download-url";
@@ -21,7 +21,7 @@ function BrevlyLinkList() {
       <div className="flex justify-center">
         <div className="mt-8">
           <div className="flex justify-center mb-3">
-            <LinkIcon />
+            <Link size={16} />
           </div>
           <p className="text-xs text-gray-500 uppercase">
             Ainda não existem links cadastrados
@@ -68,7 +68,7 @@ export function BrevlyLinkListContainer() {
           disabled={mutation.isPending}
           onClick={handleExport}
         >
-          <DownloadSimpleIcon /> Baixar CSV
+          <DownloadSimple size={16} /> Baixar CSV
         </Button>
       </div>
       <hr className="h-1 text-gray-200" />

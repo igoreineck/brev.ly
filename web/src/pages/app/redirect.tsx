@@ -3,7 +3,7 @@ import { findLink, FindLinkResponse } from "@/api/find-link";
 import { incrementLinkAccess } from "@/api/increment-link-access";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import LogoIcon from "@/assets/Logo_Icon.svg";
+import LogoIcon from "@/assets/logo-icon.svg";
 
 function redirect(url: string) {
   setTimeout(() => {
@@ -27,7 +27,7 @@ export function Redirect() {
       mutate(result.id);
       redirect(result.originalUrl);
     }
-  }, [result]);
+  }, [result, mutate]);
 
   if (isSuccess && !result) {
     return navigate("/404");

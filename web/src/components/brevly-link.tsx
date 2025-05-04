@@ -1,4 +1,4 @@
-import { TrashIcon, CopyIcon } from "@/components/icons";
+import { Trash, Copy } from "phosphor-react";
 import { Button } from "./ui";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteLink } from "@/api/delete-link";
@@ -56,13 +56,13 @@ export function BrevlyLink(props: LinkProps) {
             className="bg-gray-200 rounded-lg text-gray-600 border-gray-200 border-1 hover:bg-gray-200 hover:border-primary cursor-pointer"
             onClick={() => copyToClipboard(props.originalUrl)}
           >
-            <CopyIcon />
+            <Copy size={16} />
           </Button>
           <Button
             className="bg-gray-200 rounded-lg text-gray-600 border-gray-200 border-1 hover:bg-gray-200 hover:border-primary cursor-pointer"
             onClick={() => handleDelete(props.id)}
           >
-            <TrashIcon />
+            <Trash size={16} />
           </Button>
         </div>
       </div>
