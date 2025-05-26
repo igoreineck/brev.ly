@@ -12,9 +12,8 @@
     "db:studio": "drizzle-kit studio",
     "db:generate:test": "dotenv -e .env.test -- drizzle-kit generate",
     "db:migrate:test": "dotenv -e .env.test -- drizzle-kit migrate",
-    "pretest": "pnpm run db:migrate:test",
-    "pretest:watch": "pnpm run db:migrate:test",
-    "build": "tsup-node"
+    "build": "tsup src --format esm",
+    "start": "node dist/infra/http/server.mjs"
   },
   "keywords": [],
   "author": "",

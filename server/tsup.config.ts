@@ -5,4 +5,9 @@ export default defineConfig({
   clean: true,
   format: "esm",
   outDir: "dist",
+  target: "esnext",
+  external: ["dotenv/config"],
+  loader: {
+    ".sql": "text",
+  },
 });
