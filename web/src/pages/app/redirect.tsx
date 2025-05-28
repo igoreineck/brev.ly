@@ -2,7 +2,7 @@ import { useParams, useNavigate, Link } from "react-router";
 import { findLink, FindLinkResponse } from "@/api/find-link";
 import { incrementLinkAccess } from "@/api/increment-link-access";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import LogoIcon from "@/assets/logo-icon.svg";
 
 function redirect(url: string) {
@@ -11,7 +11,7 @@ function redirect(url: string) {
   }, 1 * 1000); // 1 Segundo
 }
 
-export function Redirect() {
+export function Redirect(): ReactNode {
   const navigate = useNavigate();
   const { name } = useParams();
   const { data: result, isSuccess } = useQuery<FindLinkResponse>({
@@ -30,7 +30,8 @@ export function Redirect() {
   }, [result, mutate]);
 
   if (isSuccess && !result) {
-    return navigate("/404");
+    navigate("/404");
+    return <></>;
   }
 
   return (

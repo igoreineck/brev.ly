@@ -34,11 +34,10 @@ export function BrevlyNewLink() {
         originalUrl: data.originalUrl,
       });
       reset();
-    } catch (error) {
+    } catch {
       toast.error(
         <div>
           <p className="font-bold">Erro no cadastro</p>
-          <p>{error?.response?.data?.message}</p>
         </div>
       );
     }
