@@ -6,7 +6,6 @@ FROM base AS dependencies
 
 WORKDIR /usr/src/app
 
-COPY .env .env
 COPY package.json pnpm-lock.yaml ./
 
 RUN pnpm install

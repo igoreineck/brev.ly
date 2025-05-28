@@ -22,12 +22,7 @@ services:
     restart: unless-stopped
     ports:
       - 3000:$PORT
-    environment:
-      - CLOUDFLARE_ACCESS_KEY_ID=$CLOUDFLARE_ACCESS_KEY_ID
-      - CLOUDFLARE_SECRET_ACCESS_KEY=$CLOUDFLARE_SECRET_ACCESS_KEY
-      - CLOUDFLARE_BUCKET=$CLOUDFLARE_BUCKET
-      - CLOUDFLARE_ACCOUNT_ID=$CLOUDFLARE_ACCOUNT_ID
-      - CLOUDFLARE_PUBLIC_URL=$CLOUDFLARE_PUBLIC_URL
+    env_file: .env
     networks:
       - brevly
 
