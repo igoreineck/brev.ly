@@ -2,7 +2,7 @@
 
 A URL shortener service built with modern TypeScript, following Clean Architecture principles.
 
-## 🏗️ Architecture
+## Architecture
 
 ### Technology Stack
 
@@ -37,7 +37,7 @@ src/
 - **Dependency Injection**: Database and external services injected
 - **Type Safety**: Full TypeScript with Zod schema validation
 
-## 🚀 Development
+## Development
 
 ### Prerequisites
 
@@ -101,12 +101,7 @@ src/
 - `pnpm db:studio` - Open Drizzle Studio (database GUI)
 - `pnpm db:migrate:test` - Apply migrations to test database
 
-#### Code Quality
-
-- `npx biome check .` - Run linting and formatting checks
-- `npx biome format . --write` - Auto-format code
-
-## 📡 API Endpoints
+## API Endpoints
 
 ### Links Management
 
@@ -127,7 +122,7 @@ When running the development server, visit:
 - **Swagger UI**: `http://localhost:3333/documentation`
 - **OpenAPI JSON**: `http://localhost:3333/documentation/json`
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -147,26 +142,7 @@ CLOUDFLARE_BUCKET=brevly-exports
 CLOUDFLARE_PUBLIC_URL=https://your-bucket.r2.dev
 ```
 
-## 📦 Production Deployment
-
-1. **Build the application:**
-
-   ```bash
-   pnpm build
-   ```
-
-2. **Run production server:**
-
-   ```bash
-   pnpm start
-   ```
-
-3. **Health check:**
-   ```bash
-   curl http://localhost:3333/health
-   ```
-
-## 🔗 External Services
+## External Services
 
 ### Cloudflare R2
 
@@ -178,9 +154,7 @@ Used for storing CSV export files with CDN access:
 
 ---
 
-## 📋 Project TODOs
-
-### ✅ Completed Features
+## Project TODOs
 
 - [x] Create shortened links with validation
 - [x] Prevent duplicate short URLs
