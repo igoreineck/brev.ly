@@ -1,30 +1,68 @@
-## TODOs
+# Brev.ly
 
-- [x] Deve ser possível criar um link
-  - [x] Não deve ser possível criar um link com encurtamento mal formatado
-  - [x] Não deve ser possível criar um link com encurtamento já existente
-- [x] Deve ser possível deletar um link
-- [x] Deve ser possível obter a URL original por meio do encurtamento
-- [x] Deve ser possível listar todas as URL’s cadastradas
-- [x] Deve ser possível incrementar a quantidade de acessos de um link
-- [x] Deve ser possível baixar um CSV com o relatório dos links criados
+A modern, responsive URL shortener built with React and TypeScript.
 
-- [x] Exibir mensagens de validação
-- [x] Ícones e comportamentos de estado vazio e loading
-- [x] Ícones de cabeçalho e outras páginas
-- [x] Estilizar páginas de Redirecionamento e 404
-- [x] Adicionar foco nos inputs
-- [x] Toast de erro
-- [x] Toast de copy
-- [x] Desabilitar botão de download do CSV quando a lista for vazia
-- [x] Mobile version (simples)
-- [x] Arrumar layout de fundo, ta quebrando no mobile
-- [x] Adicionar loader no botão enquanto está disabled, ao fazer download
-- [x] Avaliar inputs e mensagens de erro
+## Features
 
-## Regras
+- Create and manage custom shortened URLs
+- Track access analytics
+- Export data as CSV
+- Mobile-responsive design
+- Real-time notifications
 
-- [x] É obrigatória a criação de uma aplicação React no formato SPA utilizando o Vite como bundler
-- [x] Siga o mais fielmente possível o layout do Figma;
-- [x] Trabalhe com elementos que tragam uma boa experiência ao usuário (empty state, ícones de carregamento, bloqueio de ações a depender do estado da aplicação);
-- [x] Foco na responsividade: essa aplicação deve ter um bom uso tanto em desktops quanto em celulares.
+## Tech Stack
+
+- React 19 + TypeScript
+- Vite + Tailwind CSS 4
+- TanStack Query + React Router 7
+- Radix UI components
+
+## Getting Started
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm run dev
+
+# Build for production
+pnpm run build
+```
+
+Visit `http://localhost:5173` to view the application.
+
+## Development Progress
+
+### Core Features
+
+- [x] Should be possible to create a link
+  - [x] Should not be possible to create a link with malformed shortening
+  - [x] Should not be possible to create a link with existing shortening
+- [x] Should be possible to delete a link
+- [x] Should be possible to get the original URL through shortening
+- [x] Should be possible to list all registered URLs
+- [x] Should be possible to increment the access count of a link
+- [x] Should be possible to download a CSV with the links report
+
+### UI/UX Improvements
+
+- [x] Display validation messages
+- [x] Icons and empty state/loading behaviors
+- [x] Header icons and other pages
+- [x] Style redirect and 404 pages
+- [x] Add focus to inputs
+- [x] Error toasts
+- [x] Copy toasts
+- [x] Disable CSV download button when list is empty
+- [x] Mobile version (simple)
+- [x] Fix background layout breaking on mobile
+- [x] Add loader to button while disabled during download
+- [x] Review inputs and error messages
+
+### Technical Requirements
+
+- [x] Mandatory creation of a React SPA application using Vite as bundler
+- [x] Follow the Figma layout as faithfully as possible
+- [x] Work with elements that provide good UX (empty state, loading icons, action blocking based on application state)
+- [x] Focus on responsiveness: this application should work well on both desktops and mobile phones
