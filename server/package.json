@@ -7,6 +7,7 @@
     "dev": "tsx watch --env-file .env src/infra/http/server.ts",
     "test": "dotenv -e .env.test -- vitest run",
     "test:watch": "dotenv -e .env.test -- vitest",
+    "test:clean": "dotenv -e .env.test -- tsx scripts/clean-test-db.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",

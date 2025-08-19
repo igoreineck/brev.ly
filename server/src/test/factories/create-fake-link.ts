@@ -6,8 +6,8 @@ type CreateFakeLinkInput = {
   originalUrl: string;
 };
 
-export async function createFakeLink(input: CreateFakeLinkInput) {
-  const result = await db.insert(schema.links).values(input).returning();
+export async function createFakeLink(input: CreateFakeLinkInput, database = db) {
+  const result = await database.insert(schema.links).values(input).returning();
 
   return result[0];
 }
