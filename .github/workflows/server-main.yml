@@ -14,7 +14,7 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
 
-      - name: Configure node
+      - name: Configure Node
         id: configure-node
         uses: actions/setup-node@v4
         with:
