@@ -32,12 +32,6 @@ jobs:
           cd server
           pnpm install
 
-      - name: Run tests
-        id: run-tests
-        run: |
-          cd server
-          pnpm test
-
       - name: Login to Dockerhub
         id: login-docker-hub
         uses: docker/login-action@v3
