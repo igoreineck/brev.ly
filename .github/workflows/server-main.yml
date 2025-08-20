@@ -28,11 +28,15 @@ jobs:
 
       - name: Install dependencies
         id: install-dependencies
-        run: pnpm install
+        run: |
+          cd server
+          pnpm install
 
       - name: Run tests
         id: run-tests
-        run: pnpm test
+        run: |
+          cd server
+          pnpm test
 
       - name: Login to Dockerhub
         id: login-docker-hub
@@ -53,5 +57,6 @@ jobs:
           DOCKERHUB_REPOSITORY: ${{ vars.DOCKERHUB_REPOSITORY }}
           IMAGE_TAG: ${{ steps.generate_tag.outputs.sha }}
         run: |
+          cd server
           docker build -t $DOCKERHUB_REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REPOSITORY:$IMAGE_TAG
+          docker push $DOCKERHUB_REPOSITORY:$IMAGE_TAG
